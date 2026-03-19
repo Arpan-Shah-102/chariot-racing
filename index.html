@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Chariot Racing</title>
+        <link rel="stylesheet" href="style.css">
+        <link rel="icon" href="./assets/favicon.png">
+    </head>
+
+    <body>
+        <h1>Chariot Racing</h1>
+        <main>
+            <section class="game">
+                <div class="field">
+                    <div class="lines dividers">
+                        <div class="start-line line"></div>
+                        <div class="l1 line-horizontal"></div>
+                        <div class="l2 line-horizontal"></div>
+                        <div class="l3 line-horizontal"></div>
+                        <div class="l4 line-horizontal"></div>
+                        <div class="l5 line-horizontal"></div>
+                        <div class="finish-line line"></div>
+                    </div>
+                    <div class="track t1">
+                        <div class="chariot-1 chariot"></div>
+                    </div>
+                    <div class="track t2">
+                        <div class="chariot-2 chariot"></div>
+                    </div>
+                    <div class="track t3">
+                        <div class="chariot-3 chariot"></div>
+                    </div>
+                    <div class="track t4">
+                        <div class="chariot-4 chariot"></div>
+                    </div>
+                    <div class="track t5">
+                        <div class="chariot-5 chariot"></div>
+                    </div>
+                    <div class="track t6">
+                        <div class="chariot-6 chariot"></div>
+                    </div>
+                </div>
+                <div class="controls">
+                    <p class="terminal-2">Click start to begin the race! You selected chariot {selectedChariot}</p>
+                    <div>
+                        <button class="start">Start</button>
+                        <button disabled class="pause">Pause</button>
+                    </div>
+                </div>
+            </section>
+            <section class="betting">
+                <img src="./assets/favicon.png" alt="Chariot Racing Logo" class="logo">
+                <p class="terminal">Pick your chariot!</p>
+                <div class="chariots">
+                    <button data-chariot="1" class="chariot-1 chariot-btn"></button>
+                    <button data-chariot="2" class="chariot-2 chariot-btn"></button>
+                    <button data-chariot="3" class="chariot-3 chariot-btn"></button>
+                    <button data-chariot="4" class="chariot-4 chariot-btn"></button>
+                    <button data-chariot="5" class="chariot-5 chariot-btn"></button>
+                    <button data-chariot="6" class="chariot-6 chariot-btn"></button>
+                </div>
+            </section>
+        </main>
+    </body>
+
+    <script src="./script.js"></script>
+</html>

@@ -1,0 +1,313 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f0f0f0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+}
+h1 {
+    margin-top: 30px;
+    font-size: 36px;
+}
+
+.betting {
+    display: flex;
+    /* display: none; */
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    & > .logo {
+        height: 300px;
+        user-select: none;
+    }
+    & > .terminal {
+        margin-bottom: 20px;
+        font-size: 24px;
+    }
+    & > .chariots {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        align-items: center;
+        margin-bottom: 20px;
+    }
+    & .chariot-btn {
+        padding: 50px 100px;
+        margin: 10px 20px;
+        font-size: 18px;
+        border: none;
+        border-radius: 8px;
+        cursor: pointer;
+        transition: all 0.3s ease-in-out;
+        background-color: black;
+        border: 2px solid gray;
+
+        &.chariot-1 {
+            background: url('./assets/1.png') no-repeat center / cover;
+        }
+        &.chariot-2 {
+            background: url('./assets/2.png') no-repeat center / cover;
+        }
+        &.chariot-3 {
+            background: url('./assets/3.png') no-repeat center / cover;
+        }
+        &.chariot-4 {
+            background: url('./assets/4.png') no-repeat center / cover;
+        }
+        &.chariot-5 {
+            background: url('./assets/5.png') no-repeat center / cover;
+        }
+        &.chariot-6 {
+            background: url('./assets/6.png') no-repeat center / cover;
+        }
+
+        &:hover {
+            transform: scale(1.05);
+        }
+        &:active {
+            transform: scale(0.95);
+        }
+    }
+}
+.game {
+    display: none;
+    flex-direction: column;
+    align-items: center;
+
+    & > .field {
+        position: relative;
+        background-color: rgb(105, 69, 43);
+        margin-top: 20px;
+        height: 450px;
+        width: 900px;
+        border-radius: 16px;
+    
+        & .line-horizontal {
+            position: absolute;
+            width: 100%;
+            height: 2px;
+            background-color: white;
+    
+            &.l1 {
+                top: 75px;
+            }
+            &.l2 {
+                top: 150px;
+            }
+            &.l3 {
+                top: 225px;
+            }
+            &.l4 {
+                top: 300px;
+            }
+            &.l5 {
+                top: 375px;
+            }
+        }
+        & .line {
+            position: absolute;
+            width: 8px;
+            height: 100%;
+            background-color: darkred;
+            z-index: 1;
+    
+            &.start-line {
+                left: 125px;
+            }
+            &.finish-line {
+                right: 125px;
+            }
+        }
+        & .chariot {
+            position: absolute;
+            width: 125px;
+            height: 75px;
+            background-color: black;
+            z-index: 2;
+    
+            &.chariot-1 {
+                background: url('./assets/1.png') no-repeat center / cover;
+                top: 0;
+            }
+            &.chariot-2 {
+                background: url('./assets/2.png') no-repeat center / cover;
+                top: 75px;
+            }
+            &.chariot-3 {
+                background: url('./assets/3.png') no-repeat center / cover;
+                top: 150px;
+            }
+            &.chariot-4 {
+                background: url('./assets/4.png') no-repeat center / cover;
+                top: 225px;
+            }
+            &.chariot-5 {
+                background: url('./assets/5.png') no-repeat center / cover;
+                top: 300px;
+            }
+            &.chariot-6 {
+                background: url('./assets/6.png') no-repeat center / cover;
+                top: 375px;
+            }
+        }
+    }
+    & > .controls {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        margin-top: 30px;
+
+        & .terminal-2 {
+            margin-bottom: 20px;
+            font-size: 24px;
+            text-align: center;
+            text-wrap: balance;
+        }
+        & button {
+            padding: 10px 20px;
+            margin: 0 10px;
+            font-size: 18px;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.3s ease-in-out;
+            background-color: black;
+            color: white;
+
+            &:hover:not(:disabled) {
+                background-color: gray;
+            }
+            &:active:not(:disabled) {
+                background-color: darkgray;
+            }
+            &:disabled {
+                background-color: lightgray;
+                cursor: not-allowed;
+            }
+        }
+    }
+}
+
+@media (max-width: 930px) {
+    .game > .field {
+        width: 540px;
+        height: 300px;
+
+        & .line-horizontal {
+            height: 1px;
+
+            &.l1 {
+                top: 50px;
+            }
+            &.l2 {
+                top: 100px;
+            }
+            &.l3 {
+                top: 150px;
+            }
+            &.l4 {
+                top: 200px;
+            }
+            &.l5 {
+                top: 250px;
+            }
+        }
+        & .line {
+            width: 6px;
+
+            &.start-line {
+                left: 80px;
+            }
+            &.finish-line {
+                right: 80px;
+            }
+        }
+        & .chariot {
+            width: 80px;
+            height: 50px;
+
+            &.chariot-2 {
+                top: 50px;
+            }
+            &.chariot-3 {
+                top: 100px;
+            }
+            &.chariot-4 {
+                top: 150px;
+            }
+            &.chariot-5 {
+                top: 200px;
+            }
+            &.chariot-6 {
+                top: 250px;
+            }
+        }
+    }
+}
+@media (max-width: 600px) {
+    .game > .field {
+        width: 300px;
+        height: 150px;
+        border-radius: 8px;
+
+        & .line-horizontal {
+            &.l1 {
+                top: 25px;
+            }
+            &.l2 {
+                top: 50px;
+            }
+            &.l3 {
+                top: 75px;
+            }
+            &.l4 {
+                top: 100px;
+            }
+            &.l5 {
+                top: 125px;
+            }
+        }
+        & .line {
+            width: 4px;
+
+            &.start-line {
+                left: 40px;
+            }
+            &.finish-line {
+                right: 40px;
+            }
+        }
+        & .chariot {
+            width: 40px;
+            height: 25px;
+
+            &.chariot-2 {
+                top: 25px;
+            }
+            &.chariot-3 {
+                top: 50px;
+            }
+            &.chariot-4 {
+                top: 75px;
+            }
+            &.chariot-5 {
+                top: 100px;
+            }
+            &.chariot-6 {
+                top: 125px;
+            }
+        }
+    }
+    & .terminal-2 {
+        font-size: 12px;
+    }
+}
