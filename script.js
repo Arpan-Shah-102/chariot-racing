@@ -5,10 +5,14 @@ let gameScreen = document.querySelector('.game');
 // let selectedChariot = null;
 let selectedChariot = 1;
 let chariots = document.querySelectorAll('.chariot');
+let numberLabels = document.querySelectorAll('.number');
+let betInput = document.querySelector('.bet-input');
+let betAmount = 10;
 
 let terminal2 = document.querySelector('.terminal-2');
 let startBtn = document.querySelector('.start');
 let pauseBtn = document.querySelector('.pause');
+let resetBtn = document.querySelector('.reset');
 let raceInterval = null;
 
 allChariotButtons.forEach(button => {
@@ -23,6 +27,16 @@ allChariotButtons.forEach(button => {
     });
 });
 
+betInput.addEventListener('change', (amount) => {
+    if (amount.target.value < 0) {
+        betInput.value = 0;
+    } else if (amount.target.value > 1000) {
+        betInput.value = 1000;
+    }
+    amount.target.value = Math.floor(amount.target.value);
+    betAmount = parseInt(betInput.value);
+});
+
 startBtn.addEventListener('click',() => {
     startBtn.disabled = true;
     pauseBtn.disabled = false;
@@ -34,6 +48,11 @@ pauseBtn.addEventListener('click',() => {
     clearInterval(raceInterval);
     raceInterval = null;
 });
+resetBtn.addEventListener('click', () => {
+    clearInterval(raceInterval);
+    raceInterval = null;
+    resetGame();
+});
 function shuffleInPlace(arr) {
   for (let i = arr.length - 1; i > 0; i--) {
     const j = Math.floor(Math.random() * (i + 1));
@@ -44,10 +63,10 @@ function shuffleInPlace(arr) {
 
 const chariotSpeedA = [1, 2, 3, 4, 5];
 const chariotSpeedB = [1, 2, 3, 4, 5, 6];
-const chariotSpeedC = [2, 3, 4, 5, 6];
-const chariotSpeedD = [2, 3, 4, 5, 6, 7];
-const chariotSpeedE = [3, 4, 5, 6, 7];
-const chariotSpeedF = [3, 4, 5, 6, 7, 8];
+const chariotSpeedC = [1, 2, 3, 4, 5, 6];
+const chariotSpeedD = [1, 2, 3, 4, 5, 6, 7];
+const chariotSpeedE = [1, 2, 3, 4, 5, 6, 7];
+const chariotSpeedF = [1, 2, 3, 4, 5, 6, 7, 8];
 
 let chariotSpeeds = [chariotSpeedA, chariotSpeedB, chariotSpeedC, chariotSpeedD, chariotSpeedE, chariotSpeedF];
 let chariotPositions = [0, 0, 0, 0, 0, 0];
@@ -84,6 +103,10 @@ function resetGame() {
     winners = [];
     chariotSpeeds = shuffleInPlace(chariotSpeeds);
 
+    numberLabels.forEach(label => {
+        label.classList.remove('shown');
+        label.textContent = '';
+    });
     gameScreen.style.display = 'none';
     startGameScreen.style.display = 'flex';
 }
@@ -109,20 +132,25 @@ function startRace() {
             if (chariotPositions[i] >= raceWidth) {
                 winners.push(i + 1);
                 raceTimeInterval -= 10;
+                numberLabels[i].classList.add('shown');
+                numberLabels[i].textContent = `${winners.length}${winners.length === 1 ? 'st' : winners.length === 2 ? 'nd' : winners.length === 3 ? 'rd' : 'th'}`;
             }
 
             if (winners.length === 6) {
                 clearInterval(raceInterval);
                 raceInterval = null;
-                alert(`1st: Chariot ${winners[0]}\n2nd: Chariot ${winners[1]}\n3rd: Chariot ${winners[2]}\n4th: Chariot ${winners[3]}\n5th: Chariot ${winners[4]}\n6th: Chariot ${winners[5]}`);
+                setTimeout(() => {
+                    alert(`1st: Chariot ${winners[0]}\n2nd: Chariot ${winners[1]}\n3rd: Chariot ${winners[2]}\n4th: Chariot ${winners[3]}\n5th: Chariot ${winners[4]}\n6th: Chariot ${winners[5]}`);
 
-                if (winners[0] == selectedChariot) {
-                    alert('Congratulations! You won the round!');
-                } else {
-                    alert(`You got ${winners.indexOf(parseInt(selectedChariot)) + 1} place.\nBetter luck next time!`);
-                }
-                resetGame();
-                return;
+                    if (winners[0] == selectedChariot) {
+                        const payout = (betAmount * 6).toLocaleString('en-US');
+                        alert(`Congratulations! You won the round! You made $${payout}!`);
+                    } else {
+                        alert(`You got ${winners.indexOf(parseInt(selectedChariot)) + 1}${winners.indexOf(parseInt(selectedChariot)) === 0 ? 'st' : winners.indexOf(parseInt(selectedChariot)) === 1 ? 'nd' : winners.indexOf(parseInt(selectedChariot)) === 2 ? 'rd' : 'th'} place.\nBetter luck next time!`);
+                    }
+                    resetGame();
+                    return;
+                }, 250);
             }
         }
     }, raceTimeInterval);

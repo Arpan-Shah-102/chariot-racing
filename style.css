@@ -29,8 +29,15 @@ h1 {
         user-select: none;
     }
     & > .terminal {
-        margin-bottom: 20px;
+        margin-bottom: 15px;
         font-size: 24px;
+    }
+    & .bet-input {
+        margin-bottom: 10px;
+        font-size: 18px;
+        padding: 5px 10px;
+        border-radius: 18px;
+        width: 80px;
     }
     & > .chariots {
         display: flex;
@@ -79,6 +86,7 @@ h1 {
 }
 .game {
     display: none;
+    /* display: flex; */
     flex-direction: column;
     align-items: center;
 
@@ -110,6 +118,40 @@ h1 {
             }
             &.l5 {
                 top: 375px;
+            }
+        }
+        & .numbers {
+            position: absolute;
+            color: white;
+            font-size: 24px;
+            width: 100%;
+            height: 100%;
+            
+            & .number {
+                position: absolute;
+                right: 30px;
+                line-height: 75px;
+                font-weight: normal;
+                display: none;
+
+                &.s2 {
+                    top: 75px;
+                }
+                &.s3 {
+                    top: 150px;
+                }
+                &.s4 {
+                    top: 225px;
+                }
+                &.s5 {
+                    top: 300px;
+                }
+                &.s6 {
+                    top: 375px;
+                }
+                &.shown {
+                    display: block;
+                }
             }
         }
         & .line {
@@ -221,6 +263,27 @@ h1 {
                 top: 250px;
             }
         }
+        & .number {
+            line-height: 50px !important;
+            right: 20px !important;
+            font-size: 18px !important;
+
+            &.s2 {
+                top: 50px !important;
+            }
+            &.s3 {
+                top: 100px !important;
+            }
+            &.s4 {
+                top: 150px !important;
+            }
+            &.s5 {
+                top: 200px !important;
+            }
+            &.s6 {
+                top: 250px !important;
+            }
+        }
         & .line {
             width: 6px;
 
@@ -274,6 +337,27 @@ h1 {
             }
             &.l5 {
                 top: 125px;
+            }
+        }
+        & .number {
+            line-height: 25px !important;
+            font-size: 14px !important;
+            right: 10px !important;
+
+            &.s2 {
+                top: 25px !important;
+            }
+            &.s3 {
+                top: 50px !important;
+            }
+            &.s4 {
+                top: 75px !important;
+            }
+            &.s5 {
+                top: 100px !important;
+            }
+            &.s6 {
+                top: 125px !important;
             }
         }
         & .line {

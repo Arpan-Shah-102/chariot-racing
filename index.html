@@ -21,6 +21,14 @@
                         <div class="l4 line-horizontal"></div>
                         <div class="l5 line-horizontal"></div>
                         <div class="finish-line line"></div>
+                        <div class="numbers">
+                            <h2 class="s1 number">1st</h2>
+                            <h2 class="s2 number">2nd</h2>
+                            <h2 class="s3 number">3rd</h2>
+                            <h2 class="s4 number">4th</h2>
+                            <h2 class="s5 number">5th</h2>
+                            <h2 class="s6 number">6th</h2>
+                        </div>
                     </div>
                     <div class="track t1">
                         <div class="chariot-1 chariot"></div>
@@ -46,12 +54,14 @@
                     <div>
                         <button class="start">Start</button>
                         <button disabled class="pause">Pause</button>
+                        <button class="reset">Reset</button>
                     </div>
                 </div>
             </section>
             <section class="betting">
                 <img src="./assets/favicon.png" alt="Chariot Racing Logo" class="logo">
                 <p class="terminal">Pick your chariot!</p>
+                <label>Bet: <input class="bet-input" type="number" placeholder="Bet Amount" value="10" min="0" max="1000" step="1"></label>
                 <div class="chariots">
                     <button data-chariot="1" class="chariot-1 chariot-btn"></button>
                     <button data-chariot="2" class="chariot-2 chariot-btn"></button>
