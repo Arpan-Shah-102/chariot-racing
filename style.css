@@ -17,6 +17,75 @@ h1 {
     font-size: 36px;
 }
 
+.money-label {
+    font-size: 24px;
+    position: fixed;
+    top: 15px;
+    left: 15px;
+}
+.settings {
+    position: fixed;
+    bottom: 10px;
+    left: 10px;
+
+    padding: 6px 12px;
+    font-size: 16px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.3s ease-in-out;
+    background-color: black;
+    color: white;
+
+    &:hover {
+        background-color: gray;
+    }
+    &:active {
+        background-color: darkgray;
+    }
+}
+.settings-display {
+    position: fixed;
+    bottom: 50px;
+    left: 10px;
+    padding: 20px;
+    background-color: white;
+    border: 2px solid black;
+    border-radius: 8px;
+    display: none;
+    /* display: flex; */
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+    z-index: 10;
+
+    & label {
+        font-size: 18px;
+        cursor: pointer;
+        margin-top: 10px;
+    }
+    & .reset-data {
+        padding: 6px 12px;
+        font-size: 16px;
+        border: none;
+        border-radius: 8px;
+        cursor: pointer;
+        transition: all 0.3s ease-in-out;
+        background-color: darkred;
+        color: white;
+
+        &:hover {
+            background-color: red;
+        }
+        &:active {
+            opacity: 0.5;
+        }
+    }
+    &.shown {
+        display: flex;
+    }
+}
+
 .betting {
     display: flex;
     /* display: none; */
