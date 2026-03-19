@@ -82,6 +82,7 @@ function resetGame() {
     pauseBtn.disabled = true;
     raceTimeInterval = 75;
     winners = [];
+    chariotSpeeds = shuffleInPlace(chariotSpeeds);
 
     gameScreen.style.display = 'none';
     startGameScreen.style.display = 'flex';
