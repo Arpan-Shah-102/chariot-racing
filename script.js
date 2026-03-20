@@ -53,6 +53,9 @@ betInput.addEventListener('change', (amount) => {
     } else if (amount.target.value > 1000) {
         betInput.value = 1000;
     }
+    if (amount.target.value > getMoney()) {
+        betInput.value = getMoney();
+    }
     amount.target.value = Math.floor(amount.target.value);
     betAmount = parseInt(betInput.value);
 });
@@ -224,7 +227,9 @@ function playSound(sfx) {
     }
 }
 function getMoney() {
-    return parseFloat(localStorage.getItem('Drachma')) || 100;
+    const raw = localStorage.getItem('Drachma');
+    const value = Number(raw);
+    return Number.isFinite(value) ? value : 100;
 }
 function calcMoney(amount, operation = '+') {
     let currentCredits = getMoney();
